@@ -1,0 +1,10 @@
+cluster.name: "laradock-cluster"
+network.host: 0.0.0.0
+
+# 单机单节点模式
+discovery.type: single-node
+
+# 安全模块开启
+xpack.security.enabled: true
+xpack.security.http.ssl.enabled: false
+xpack.security.transport.ssl.enabled: false

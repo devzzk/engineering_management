@@ -1,0 +1,187 @@
+services:
+
+    ## Workspace ################################################################
+    workspace:
+        restart: always
+        image: zhikai119/laradock-workspace:8.3.0
+        volumes:
+            - ./:/var/www/
+        depends_on:
+            - mysql
+            - redis
+        tty: true
+        logging:
+            options:
+                max-file: "5"
+                max-size: "10m"
+
+    ## php-fpm ################################################################
+    php-fpm:
+        image: zhikai119/laradock-php-fpm:8.3.0
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+        depends_on:
+            - mysql
+            - redis
+        volumes:
+            - ./docker/php-fpm/php8.3.ini:/usr/local/etc/php/php.ini
+            - ./:/var/www:cached
+            - /var/www/node_modules
+        cap_add:
+            - SYS_PTRACE
+        expose:
+            - 9000
+            - 8000
+        restart: on-failure
+        logging:
+            options:
+                max-file: "5"
+                max-size: "10m"
+    ## php-worker ################################################################
+    php-worker:
+        image: zhikai119/laradock-php-worker:8.3.0
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+        depends_on:
+            - mysql
+            - redis
+            - php-fpm
+        links:
+            - php-fpm
+        volumes:
+            - ./:/var/www:cached
+            - ./docker/php-worker/supervisord.d:/etc/supervisord.d
+        logging:
+            options:
+                max-file: "5"
+                max-size: "10m"
+
+    ### NGINX Server #########################################
+    nginx:
+        build:
+            context: ./docker/nginx
+        volumes:
+            - ./:/var/www:cached
+            - ./docker/docker-runtime/nginx/log:/var/log/nginx
+            - ./docker/nginx/local/sites:/etc/nginx/sites-available
+        ports:
+            - "8000:80"
+        depends_on:
+            - php-fpm
+        links:
+            - php-fpm
+        logging:
+            options:
+                max-file: "5"
+                max-size: "10m"
+
+    ### MySQL ################################################
+    mysql:
+        build:
+            context: ./docker/mysql
+            args:
+                - MYSQL_VERSION=8.0
+        environment:
+            - MYSQL_USER=laravel
+            - MYSQL_PASSWORD=123456
+            - MYSQL_ROOT_PASSWORD=123456
+            - TZ=Asia/Shanghai
+        volumes:
+            - ./docker/docker-runtime/mysql:/var/lib/mysql
+            - ./docker/mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+        ports:
+            - "33060:3306"
+        logging:
+            options:
+                max-file: "5"
+                max-size: "10m"
+
+    ### Redis ################################################
+    redis:
+        build: ./docker/redis
+        volumes:
+            - ./docker/docker-runtime/redis:/data
+        ports:
+            - "6379:6379"
+        logging:
+            options:
+                max-file: "5"
+                max-size: "10m"
+    ### Elasticsearch ################################################
+    # elasticsearch:
+        # image: docker.elastic.co/elasticsearch/elasticsearch:9.4.0-arm64
+        # volumes:
+        #     - ./docker/docker-runtime/elasticsearch:/usr/share/elasticsearch/data
+        #     # - ./docker/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+        # environment:
+        #     - cluster.name=laradock-cluster
+        #     - node.name=laradock-node
+        #     - bootstrap.memory_lock=true
+        #     - xpack.security.enabled=false
+        #     - xpack.security.transport.ssl.enabled=false
+        #     - indices.id_field_data.enabled=true
+        #     - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+        #     - cluster.initial_master_nodes=laradock-node
+        # ulimits:
+        #     memlock:
+        #         soft: -1
+        #         hard: -1
+        #     nofile:
+        #         soft: 65536
+        #         hard: 65536
+        # ports:
+        #     - "9200:9200"
+        # depends_on:
+        #     - php-fpm
+        # logging:
+        #     options:
+        #         max-file: "5"
+        #         max-size: "10m"
+    # ### Logstash #############################################
+    # logstash:
+    #     restart: always
+    #     image: docker.elastic.co/logstash/logstash:9.4.0-arm64
+    #     volumes:
+    #         - './docker/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml'
+    #     ports:
+    #         - '5001:5001'
+    #     environment:
+    #         LS_JAVA_OPTS: '-Xmx1g -Xms1g'
+    #     env_file:
+    #         - .env
+    #     depends_on:
+    #         - elasticsearch
+    #         - mysql
+    #     logging:
+    #         options:
+    #             max-file: "5"
+    #             max-size: "10m"
+
+    # ### Kibana ###############################################
+    # kibana:
+    #     restart: always
+    #     image: docker.elastic.co/kibana/kibana:9.4.0-arm64
+    #     # environment:
+    #     #     - I18N_LOCALE="zh-CN"
+    #     volumes:
+    #         - './docker/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro'
+    #     ports:
+    #         - "5601:5601"
+    #     depends_on:
+    #         - elasticsearch
+    #     logging:
+    #         options:
+    #             max-file: "5"
+    #             max-size: "10m"
+
+    ### RabbitMQ ################################################
+    rabbitmq:
+        image: zhikai119/rabbitmq:v1.0.0
+        volumes:
+            - ./docker/docker-runtime/rabbitmq:/var/lib/rabbitmq
+        ports:
+            - "5672:5672"
+        logging:
+            options:
+                max-file: "5"
+                max-size: "10m"

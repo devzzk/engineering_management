@@ -1,0 +1,97 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Brand;
+use Illuminate\Database\Seeder;
+
+class BrandSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        Brand::query()->upsert([
+            ['id' => 1, 'name' => '西门子 Siemens', 'code' => 'SIEMENS', 'country' => '德国', 'remark' => '全球电气与自动化龙头，覆盖发电、输配电、PLC、变频、低压电器、楼宇全领域', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 2, 'name' => 'ABB', 'code' => 'ABB', 'country' => '瑞士', 'remark' => '电力与自动化巨头，覆盖电网、机器人、低压电器、变频器、GIS', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 3, 'name' => '施耐德电气 Schneider Electric', 'code' => 'SCHNEIDER', 'country' => '法国', 'remark' => '低压配电、工控自动化、能效管理龙头，旗下有梅兰日兰、梅兰日兰、Modicon、TE等', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 4, 'name' => '伊顿 Eaton', 'code' => 'EATON', 'country' => '爱尔兰/美国', 'remark' => '电气管理、工业元件、UPS、汽车与航空电器', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 5, 'name' => '霍尼韦尔 Honeywell', 'code' => 'HONEYWELL', 'country' => '美国', 'remark' => '自动化控制、楼宇科技、过程控制、安防', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 6, 'name' => '艾默生 Emerson', 'code' => 'EMERSON', 'country' => '美国', 'remark' => '过程自动化、工业解决方案、暖通', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 7, 'name' => '罗克韦尔自动化 Rockwell Automation', 'code' => 'ROCKWELL', 'country' => '美国', 'remark' => 'PLC、工控网络、北美工业自动化龙头', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 8, 'name' => 'Allen-Bradley 罗克韦尔旗下', 'code' => 'ALLEN_BRADLEY', 'country' => '美国', 'remark' => 'PLC、工控系统（罗克韦尔旗下品牌）', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 9, 'name' => '通用电气 GE', 'code' => 'GE', 'country' => '美国', 'remark' => '发电、输配电、能源、航空发动机', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 10, 'name' => '三菱电机 Mitsubishi Electric', 'code' => 'MITSUBISHI', 'country' => '日本', 'remark' => 'PLC、变频器、低压电器、发电设备、电梯', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 11, 'name' => '富士电机 Fuji Electric', 'code' => 'FUJI', 'country' => '日本', 'remark' => '低压电器、变频器、发电设备、半导体', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 12, 'name' => '欧姆龙 Omron', 'code' => 'OMRON', 'country' => '日本', 'remark' => '传感器、PLC、温控器、继电器、视觉', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 13, 'name' => '安川电机 Yaskawa', 'code' => 'YASKAWA', 'country' => '日本', 'remark' => '伺服、变频器、工业机器人', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 14, 'name' => '松下 Panasonic', 'code' => 'PANASONIC', 'country' => '日本', 'remark' => '电工电气、继电器、电池、自动化元件', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 15, 'name' => '日立 Hitachi', 'code' => 'HITACHI', 'country' => '日本', 'remark' => '发电设备、工控、电梯、轨道交通', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 16, 'name' => '东芝 Toshiba', 'code' => 'TOSHIBA', 'country' => '日本', 'remark' => '电机、变频器、发电设备', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 17, 'name' => '发那科 FANUC', 'code' => 'FANUC', 'country' => '日本', 'remark' => 'CNC、伺服系统、工业机器人', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 18, 'name' => '基恩士 Keyence', 'code' => 'KEYENCE', 'country' => '日本', 'remark' => '传感器、机器视觉、测量仪器、激光打标', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 19, 'name' => '台达电子 Delta', 'code' => 'DELTA', 'country' => '中国台湾', 'remark' => '电源、变频器、PLC、伺服、光伏逆变', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 20, 'name' => '研华 Advantech', 'code' => 'ADVANTECH', 'country' => '中国台湾', 'remark' => '工控机、物联网、HMI、数据采集', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 21, 'name' => '东元电机 TECO', 'code' => 'TECO', 'country' => '中国台湾', 'remark' => '电机、变频器、压缩机', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 22, 'name' => '菲尼克斯电气 Phoenix Contact', 'code' => 'PHOENIX', 'country' => '德国', 'remark' => '接线端子、工业接口、防雷、PLC', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 23, 'name' => '魏德米勒 Weidmüller', 'code' => 'WEIDMULLER', 'country' => '德国', 'remark' => '接线端子、工业连接、PCB 接插件', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 24, 'name' => '费斯托 Festo', 'code' => 'FESTO', 'country' => '德国', 'remark' => '气动元件、自动化技术、教学培训', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 25, 'name' => '倍福 Beckhoff', 'code' => 'BECKHOFF', 'country' => '德国', 'remark' => 'PC-based 控制、EtherCAT、I/O', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 26, 'name' => '伦茨 Lenze', 'code' => 'LENZE', 'country' => '德国', 'remark' => '变频器、伺服、减速机', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 27, 'name' => 'SEW-Eurodrive', 'code' => 'SEW', 'country' => '德国', 'remark' => '减速机、电机、变频器，传动领域龙头', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 28, 'name' => '博世力士乐 Bosch Rexroth', 'code' => 'REXROTH', 'country' => '德国', 'remark' => '液压、传动、工控、线性运动', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 29, 'name' => '皮尔磁 Pilz', 'code' => 'PILZ', 'country' => '德国', 'remark' => '安全继电器、安全自动化、PNOZ', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 30, 'name' => '西克 SICK', 'code' => 'SICK', 'country' => '德国', 'remark' => '光电传感器、安全光栅、激光测量', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 31, 'name' => '巴鲁夫 Balluff', 'code' => 'BALLUFF', 'country' => '德国', 'remark' => '接近开关、传感器、磁致伸缩', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 32, 'name' => '图尔克 Turck', 'code' => 'TURCK', 'country' => '德国', 'remark' => '传感器、现场总线、接插件', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 33, 'name' => '易福门 ifm', 'code' => 'IFM', 'country' => '德国', 'remark' => '传感器、识别系统、总线', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 34, 'name' => '浩亭 HARTING', 'code' => 'HARTING', 'country' => '德国', 'remark' => '工业连接器、重载连接器', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 35, 'name' => '穆尔电子 Murrelektronik', 'code' => 'MURR', 'country' => '德国', 'remark' => '工业电源、接口模块、分布式I/O', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 36, 'name' => '堡盟 Baumer', 'code' => 'BAUMER', 'country' => '瑞士', 'remark' => '传感器、编码器、视觉', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 37, 'name' => '福禄克 Fluke', 'code' => 'FLUKE', 'country' => '美国', 'remark' => '手持测试测量仪器、热像仪', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 38, 'name' => '泰科电子 TE Connectivity', 'code' => 'TE', 'country' => '瑞士/美国', 'remark' => '连接器、继电器、传感器', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 39, 'name' => '罗格朗 Legrand', 'code' => 'LEGRAND', 'country' => '法国', 'remark' => '低压电器、综合布线、开关插座', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 40, 'name' => '海格 Hager', 'code' => 'HAGER', 'country' => '德国', 'remark' => '低压配电、家用配电箱、断路器', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 41, 'name' => '正泰 CHINT', 'code' => 'CHINT', 'country' => '中国浙江温州', 'remark' => '低压电器龙头、光伏、新能源、输配电', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 42, 'name' => '德力西 DELIXI', 'code' => 'DELIXI', 'country' => '中国浙江温州', 'remark' => '低压电器、工控、家居电气', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 43, 'name' => '天正 TENGEN', 'code' => 'TENGEN', 'country' => '中国浙江温州', 'remark' => '低压电器、仪器仪表', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 44, 'name' => '上海人民电器 RMEPS', 'code' => 'RMEPS', 'country' => '中国上海', 'remark' => '低压电器、断路器', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 45, 'name' => '良信 Nader', 'code' => 'NADER', 'country' => '中国上海', 'remark' => '中高端低压电器，面向地产、通信、新能源', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 46, 'name' => '常熟开关制造 CSW', 'code' => 'CSW', 'country' => '中国江苏常熟', 'remark' => '塑壳断路器、框架断路器', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 47, 'name' => '人民电器 PEOPLE', 'code' => 'PEOPLE', 'country' => '中国浙江温州', 'remark' => '低压电器、输配电', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 48, 'name' => '华仪电气 HUAYI', 'code' => 'HUAYI', 'country' => '中国浙江', 'remark' => '高压开关、风电成套', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 49, 'name' => '特变电工 TBEA', 'code' => 'TBEA', 'country' => '中国新疆', 'remark' => '变压器、输变电、新能源', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 50, 'name' => '思源电气 Sieyuan', 'code' => 'SIYUAN', 'country' => '中国上海', 'remark' => '高压开关、GIS、继电保护、变电站成套', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 51, 'name' => '南瑞继保 NARI', 'code' => 'NARI', 'country' => '中国江苏南京', 'remark' => '继电保护、电网自动化、直流输电', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 52, 'name' => '许继电气 XJ', 'code' => 'XJ', 'country' => '中国河南许昌', 'remark' => '继电保护、直流输电、智能电表', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 53, 'name' => '平高电气 PG', 'code' => 'PG', 'country' => '中国河南平顶山', 'remark' => '高压开关、GIS、特高压', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 54, 'name' => '四方继保 SIFANG', 'code' => 'SIFANG', 'country' => '中国北京', 'remark' => '继电保护、变电站自动化', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 55, 'name' => '国电南自 NARIP', 'code' => 'NARIP', 'country' => '中国江苏南京', 'remark' => '电网自动化、变电站自动化', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 56, 'name' => '北京科锐 KERUI', 'code' => 'KERUI', 'country' => '中国北京', 'remark' => '配电设备、环网柜', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 57, 'name' => '华明装备 HUAMING', 'code' => 'HUAMING', 'country' => '中国上海', 'remark' => '变压器分接开关', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 58, 'name' => '金盘科技 JINPAN', 'code' => 'JINPAN', 'country' => '中国海南', 'remark' => '干式变压器、储能变流', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 59, 'name' => '汇川技术 INOVANCE', 'code' => 'INOVANCE', 'country' => '中国广东深圳', 'remark' => '变频器、伺服、PLC、新能源汽车电控', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 60, 'name' => '英威腾 INVT', 'code' => 'INVT', 'country' => '中国广东深圳', 'remark' => '变频器、UPS、新能源汽车驱动', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 61, 'name' => '埃斯顿 ESTUN', 'code' => 'ESTUN', 'country' => '中国江苏南京', 'remark' => '伺服系统、工业机器人', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 62, 'name' => '雷赛智能 LEADSHINE', 'code' => 'LEADSHINE', 'country' => '中国广东深圳', 'remark' => '运动控制、步进/伺服系统', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 63, 'name' => '鸣志电器 MOONS\'', 'code' => 'MOONS', 'country' => '中国上海', 'remark' => '步进电机、驱动系统', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 64, 'name' => '步科电气 KINCO', 'code' => 'KINCO', 'country' => '中国广东深圳', 'remark' => 'HMI、PLC、伺服', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 65, 'name' => '信捷电气 XINJE', 'code' => 'XINJE', 'country' => '中国江苏无锡', 'remark' => 'PLC、HMI、伺服', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 66, 'name' => '维控科技 WEICON', 'code' => 'WEICON', 'country' => '中国福建福州', 'remark' => 'HMI、PLC、物联网', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 67, 'name' => '和利时 HOLLYSYS', 'code' => 'HOLLYSYS', 'country' => '中国北京', 'remark' => 'DCS、PLC、轨道交通自动化', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 68, 'name' => '阳光电源 SUNGROW', 'code' => 'SUNGROW', 'country' => '中国安徽合肥', 'remark' => '光伏逆变器、储能系统', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 69, 'name' => '华为数字能源 HUAWEI', 'code' => 'HUAWEI', 'country' => '中国广东深圳', 'remark' => '光伏逆变器、数据中心能源、充电桩', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 70, 'name' => '比亚迪 BYD', 'code' => 'BYD', 'country' => '中国广东深圳', 'remark' => '动力电池、IGBT、新能源汽车、储能', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 71, 'name' => '宁德时代 CATL', 'code' => 'CATL', 'country' => '中国福建宁德', 'remark' => '动力电池、储能电池', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 72, 'name' => '科士达 KSTAR', 'code' => 'KSTAR', 'country' => '中国广东深圳', 'remark' => 'UPS、数据中心、储能、充电桩', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 73, 'name' => '科华数据 KEHUA', 'code' => 'KEHUA', 'country' => '中国福建厦门', 'remark' => 'UPS、数据中心、储能', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 74, 'name' => '易事特 EAST', 'code' => 'EAST', 'country' => '中国广东东莞', 'remark' => 'UPS、充电桩、储能', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 75, 'name' => '中国中车 CRRC', 'code' => 'CRRC', 'country' => '中国北京', 'remark' => '轨道交通牵引电气、电机、变流', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 76, 'name' => '上海电气 SHANGHAI ELECTRIC', 'code' => 'SHANGHAI_ELEC', 'country' => '中国上海', 'remark' => '发电设备、电站成套、核电、风电', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 77, 'name' => '东方电气 DONGFANG ELECTRIC', 'code' => 'DONGFANG', 'country' => '中国四川', 'remark' => '发电设备、水电、火电、核电', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 78, 'name' => '哈尔滨电气 HARBIN ELECTRIC', 'code' => 'HARBIN_ELEC', 'country' => '中国黑龙江', 'remark' => '发电设备、电站成套', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+            ['id' => 79, 'name' => '万控智造 WANKONG', 'code' => 'WANKONG', 'country' => '中国浙江温州', 'remark' => '机柜、配电元件、配电箱', 'created_at' => '2026-09-16 20:30:00', 'updated_at' => '2026-09-16 20:30:00'],
+        ], ['id'], ['name', 'code', 'country', 'remark', 'created_at', 'updated_at']);
+    }
+}

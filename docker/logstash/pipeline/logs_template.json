@@ -1,0 +1,58 @@
+{
+  "index_patterns": ["app_logs-*", "api_logs-*"],
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 0,
+    "refresh_interval": "5s",
+    "codec": "best_compression"
+  },
+  "mappings": {
+    "dynamic_templates": [
+      {
+        "context_fields_as_keyword": {
+          "path_match": "context.*",
+          "mapping": {
+            "type": "keyword",
+            "ignore_above": 1024
+          }
+        }
+      }
+    ],
+    "properties": {
+      "@timestamp": { "type": "date" },
+      "log_timestamp": { "type": "date", "format": "yyyy-MM-dd HH:mm:ss" },
+      "laravel_env": { "type": "keyword" },
+      "log_level": { "type": "keyword" },
+      "log_message": {
+        "type": "text",
+        "fields": {
+          "keyword": { "type": "keyword", "ignore_above": 512 }
+        }
+      },
+      "context": {
+        "type": "object",
+        "enabled": true
+      },
+      "request_id": { "type": "keyword" },
+      "http_method": { "type": "keyword" },
+      "http_path": {
+        "type": "text",
+        "fields": {
+          "keyword": { "type": "keyword", "ignore_above": 256 }
+        }
+      },
+      "http_status": { "type": "integer" },
+      "duration_ms": { "type": "integer" },
+      "user_id": { "type": "keyword" },
+      "client_ip": { "type": "ip" },
+      "outcome": { "type": "keyword" },
+      "exception_class": { "type": "keyword" },
+      "exception_message": {
+        "type": "text",
+        "fields": {
+          "keyword": { "type": "keyword", "ignore_above": 512 }
+        }
+      }
+    }
+  }
+}
